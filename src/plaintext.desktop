@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Plain Text
+Comment=Convert Clip Board Content to Plain Text
+Icon=plaintext
+Categories=System;
+Exec=plaintext
+Terminal=false
+StartupNotify=false

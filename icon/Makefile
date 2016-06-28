@@ -1,0 +1,3 @@
+
+install:
+	cp plaintext.png /usr/share/icons/hicolor/48x48/apps/
