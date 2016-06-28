@@ -5,7 +5,7 @@ As I copy and paste between apps, from time to time I don't want the format to b
 This app was inspire by an tiny app on OS X that transform the content on clip board into
 plain text.
 
-On the first version, I try to use QT5. I found the time to run the QT5 app is very slow
+On the first version, I try to use QT5. I found the time to run the QT5 app is very long
 (like 0.3 seconds on my laptop). So I work out this, which cost only 0.041 seconds on my
 laptop.
 
