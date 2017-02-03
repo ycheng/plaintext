@@ -1,7 +1,6 @@
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 
-static gboolean is_auto_iconfy = FALSE;
 static GtkWidget *window = NULL;
 
 static void text_request_callback(GtkClipboard *clipboard,
@@ -19,16 +18,10 @@ gboolean window_event_notification(
   if (event->new_window_state & GDK_WINDOW_STATE_FOCUSED) {
     GtkClipboard* clipboard = gtk_clipboard_get(GDK_SELECTION_CLIPBOARD);
     gtk_clipboard_request_text(clipboard, text_request_callback, NULL);
-
-    if (is_auto_iconfy) gtk_window_iconify (GTK_WINDOW(window));
+    gtk_window_iconify (GTK_WINDOW(window));
   }
 
   return TRUE;
-}
-
-static void
-autoiconfy(GtkWidget *widget, gpointer p) {
-  is_auto_iconfy = TRUE;
 }
 
 static void
@@ -42,19 +35,10 @@ activate (GtkApplication* app,
 
     g_signal_connect(G_OBJECT(window), "window-state-event", G_CALLBACK(window_event_notification), NULL);
 
-    GtkWidget *box1;
-    box1 = gtk_box_new (FALSE, 0);
-    gtk_container_add (GTK_CONTAINER (window), box1);
-
-    GtkWidget *button1;
-    button1 = gtk_button_new_with_label ("AutoIconfy");
-    g_signal_connect(button1, "clicked", G_CALLBACK(autoiconfy), NULL);
-    gtk_box_pack_start (GTK_BOX(box1), button1, TRUE, TRUE, 0);
-
     GtkWidget *button;
-    button = gtk_button_new_with_label ("Quit");
+    button = gtk_button_new_with_label ("Converting !!");
     g_signal_connect_swapped (button, "clicked", G_CALLBACK (gtk_widget_destroy), window);
-    gtk_box_pack_start (GTK_BOX(box1), button, TRUE, TRUE, 0);
+    gtk_container_add (GTK_CONTAINER (window), button);
 
     gtk_widget_show_all (window);
   } else {
