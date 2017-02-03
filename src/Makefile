@@ -2,10 +2,12 @@
 all: plaintext
 
 plaintext: plaintext.c
-	$(CC) -O plaintext.c \
+	$(CC) -o plaintext \
+		 plaintext.c \
 		`pkg-config --cflags gtk+-3.0` \
 		`pkg-config --libs gtk+-3.0` \
-		-o plaintext
+		-Wall
+
 
 clean:
 	rm plaintext
